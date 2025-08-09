@@ -1,4 +1,5 @@
 # 📄 Simple RAG Streamlit App Using GROQ + SentenceTransformer
+### https://simple-rag-app-01.streamlit.app/
 
 A clean, hands-on implementation of a **Retrieval-Augmented Generation (RAG)** system built from scratch using familiar Python tools:
 
