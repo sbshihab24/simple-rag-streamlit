@@ -63,6 +63,7 @@ GROQ_API_KEY=your_groq_api_key_here
 ## ⚡ Run the App
 streamlit run app.py
 ---
+
 ## 🔍 Core Concepts
 Sentence-Aware Chunking: Keeps text chunks semantically complete to preserve meaning
 
@@ -88,6 +89,7 @@ simple-rag-streamlit/
     └── AI_information.pdf             <- A sample PDF document for testing.
     └── attention_is_all_you_need.pdf  <- A sample PDF document for testing (for Multi-Modal RAG).
 ---
+
 ## 🤝 Contributions
 Contributions, issues, and feature requests are welcome! Feel free to open a PR or submit an issue.
 
