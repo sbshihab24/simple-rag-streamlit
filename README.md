@@ -50,9 +50,9 @@ This repo includes:
 
 ### 1. Clone this repository:
 
-## 🛠️ **Setup in 30 Seconds**  
+ 🛠️ **Setup in 30 Seconds**  
 
-### 1. Clone & Install  
+ 1. Clone & Install  
 ```bash
 git clone https://github.com/sbshihab24/simple-rag-streamlit.git
 cd simple-rag-streamlit
@@ -82,7 +82,7 @@ Easy extension to other document types or embedding models
 
 ---
 
-## 🗂️ Project Structure
+ 🗂️ Project Structure
 
 simple-rag-streamlit/
 ├── app.py                 # Streamlit app for PDF upload & Q&A
@@ -96,18 +96,15 @@ simple-rag-streamlit/
     └── attention_is_all_you_need.pdf  # Sample PDF for testing
 
 ---
-## 🤝 Contributions
+ 🤝 Contributions
 Contributions, issues, and feature requests are welcome! Feel free to open a PR or submit an issue.
 
 If you find this project helpful, please ⭐ star the repo!
 
 📫 Contact
 Mehedi Hasan Shihab
-
 GitHub: sbshihab24
-
 LinkedIn: shihab24
-
 Email: sbshihab2000@gmail.com
 
 
