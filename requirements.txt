@@ -1,0 +1,15 @@
+
+requests
+rank-bm25
+scikit-learn
+networkx
+matplotlib
+tqdm
+Pillow
+openai
+streamlit
+python-dotenv
+groq
+sentence-transformers
+PyMuPDF
+numpy
