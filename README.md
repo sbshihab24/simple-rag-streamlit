@@ -50,9 +50,63 @@ This repo includes:
 
 ### 1. Clone this repository:
 
-```bash
 git clone https://github.com/sbshihab24/simple-rag-streamlit.git
 cd simple-rag-streamlit
 2. Install dependencies:
+pip install -r requirements.txt
+3. Set your GROQ API Key:
+Create a .env file in the root directory with:
+GROQ_API_KEY=your_groq_api_key_here
+
+Or export the key in your shell:
+
+export GROQ_API_KEY="your_groq_api_key_here"
+Get your API key here: https://console.groq.com/keys
+
+⚡ Run the App
+streamlit run app.py
+🔍 Core Concepts
+Sentence-Aware Chunking: Preserves semantic integrity of text chunks
+
+Embeddings: Converts text to vector representations for semantic similarity
+
+Semantic Search: Finds best matching chunks to your query
+
+GROQ LLM API: Answers questions based on retrieved context for reliable, grounded responses
+
+Caching: Efficiently loads models and caches embeddings
+
+Streamlit UI: Simple interface for PDF upload and question answering
+
+## 🗂️ Project Structure
+plaintext
+Copy
+Edit
+simple-rag-streamlit/
+├── app.py                 # Streamlit app for PDF upload & Q&A
+├── rag_using_groq.ipynb   # Notebook prototyping the RAG pipeline
+├── requirements.txt       # Python dependencies
+├── .env                   # Environment variables (GROQ_API_KEY)
+├── README.md              # This file
+└── data/
+    ├── val.json                       # Sample validation data (queries and answers)
+    ├── AI_information.pdf             # Sample PDF document for testing
+    └── attention_is_all_you_need.pdf  # Sample PDF for Multi-Modal RAG testing
+🤝 Contributions
+Contributions, issues, and feature requests are welcome! Feel free to open a PR or submit an issue.
+
+If you find this project helpful, please ⭐ star the repo!
+
+📫 Contact
+Mehedi Hasan Shihab
+
+GitHub: sbshihab24
+
+LinkedIn: shihab24
+
+Email: sbshihab2000@gmail.com
+
+
+
 
 
