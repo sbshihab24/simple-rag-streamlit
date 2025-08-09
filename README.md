@@ -62,7 +62,7 @@ Create a .env file in the root directory with:
 GROQ_API_KEY=your_groq_api_key_here
 ## ⚡ Run the App
 streamlit run app.py
-
+---
 ## 🔍 Core Concepts
 Sentence-Aware Chunking: Keeps text chunks semantically complete to preserve meaning
 
@@ -75,7 +75,7 @@ GROQ LLM API: Answers questions grounded on the retrieved context for accuracy a
 Caching: Efficient loading and reuse of embedding models and chunk embeddings for performance
 
 Streamlit UI: User-friendly interface for easy PDF-based Q&A without coding
-
+---
 ## 🗂️ Project Structure Overview
 simple-rag-streamlit/
 ├── app.py                 # Streamlit app for PDF upload & Q&A
@@ -87,7 +87,7 @@ simple-rag-streamlit/
     └── val.json                       <- Sample validation data (queries and answers)
     └── AI_information.pdf             <- A sample PDF document for testing.
     └── attention_is_all_you_need.pdf  <- A sample PDF document for testing (for Multi-Modal RAG).
-
+---
 ### 🤝 Contributions
 Contributions, issues, and feature requests are welcome! Feel free to open a PR or submit an issue.
 
@@ -101,3 +101,4 @@ GitHub: sbshihab24
 LinkedIn: shihab24
 
 Email: sbshihab2000@gmail.com
+---
