@@ -1,134 +1,103 @@
-# All RAG Techniques: A Simpler, Hands-On Approach ✨
+# 📄 Simple RAG Streamlit App Using GROQ + SentenceTransformer
 
-[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/release/python-370/) [![Nebius AI](https://img.shields.io/badge/Nebius%20AI-API-brightgreen)](https://cloud.nebius.ai/services/llm-embedding) [![OpenAI](https://img.shields.io/badge/OpenAI-API-lightgrey)](https://openai.com/) [![Medium](https://img.shields.io/badge/Medium-Blog-black?logo=medium)](https://medium.com/@fareedkhandev/testing-every-rag-technique-to-find-the-best-094d166af27f)
 
-This repository takes a clear, hands-on approach to **Retrieval-Augmented Generation (RAG)**, breaking down advanced techniques into straightforward, understandable implementations. Instead of relying on frameworks like `LangChain` or `FAISS`, everything here is built using familiar Python libraries `openai`, `numpy`, `matplotlib`, and a few others.
 
-The goal is simple: provide code that is readable, modifiable, and educational. By focusing on the fundamentals, this project helps demystify RAG and makes it easier to understand how it really works.
+A clean, hands-on implementation of a **Retrieval-Augmented Generation (RAG)** system built from scratch using familiar Python tools:
 
-## 🚀 What's Inside?
+- PDF text extraction with PyMuPDF
+- Sentence-aware chunking and embeddings with SentenceTransformer
+- Semantic search via cosine similarity
+- GROQ LLM API for fast, grounded answer generation
+- Streamlit app for effortless PDF QA interaction
 
-This repository contains a collection of Jupyter Notebooks, each focusing on a specific RAG technique.  Each notebook provides:
+---
 
-*   A concise explanation of the technique.
-*   A step-by-step implementation from scratch.
-*   Clear code examples with inline comments.
-*   Evaluations and comparisons to demonstrate the technique's effectiveness.
-*   Visualization to visualize the results.
+## 🚀 What’s Inside?
 
-Here's a glimpse of the techniques covered:
+This repo includes:
 
-| Notebook                                      | Description                                                                                                                                                         |
-| :-------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [1. Simple RAG](1_simple_rag.ipynb)           | A basic RAG implementation.  A great starting point!                                                                                                       |
-| [2. Semantic Chunking](2_semantic_chunking.ipynb) | Splits text based on semantic similarity for more meaningful chunks.                                                                                           |
-| [3. Chunk Size Selector](3_chunk_size_selector.ipynb) | Explores the impact of different chunk sizes on retrieval performance.                                                                                    |
-| [4. Context Enriched RAG](4_context_enriched_rag.ipynb) | Retrieves neighboring chunks to provide more context.                                                                                                     |
-| [5. Contextual Chunk Headers](5_contextual_chunk_headers_rag.ipynb) | Prepends descriptive headers to each chunk before embedding.                                                                                                |
-| [6. Document Augmentation RAG](6_doc_augmentation_rag.ipynb) | Generates questions from text chunks to augment the retrieval process.                                                                                           |
-| [7. Query Transform](7_query_transform.ipynb)   | Rewrites, expands, or decomposes queries to improve retrieval.  Includes **Step-back Prompting** and **Sub-query Decomposition**.                                      |
-| [8. Reranker](8_reranker.ipynb)               | Re-ranks initially retrieved results using an LLM for better relevance.                                                                                       |
-| [9. RSE](9_rse.ipynb)                         | Relevant Segment Extraction:  Identifies and reconstructs continuous segments of text, preserving context.                                                   |
-| [10. Contextual Compression](10_contextual_compression.ipynb) | Implements contextual compression to filter and compress retrieved chunks, maximizing relevant information.                                                 |
-| [11. Feedback Loop RAG](11_feedback_loop_rag.ipynb) | Incorporates user feedback to learn and improve RAG system over time.                                                                                      |
-| [12. Adaptive RAG](12_adaptive_rag.ipynb)     | Dynamically selects the best retrieval strategy based on query type.                                                                                          |
-| [13. Self RAG](13_self_rag.ipynb)             | Implements Self-RAG, dynamically decides when and how to retrieve, evaluates relevance, and assesses support and utility.                                        |
-| [14. Proposition Chunking](14_proposition_chunking.ipynb) | Breaks down documents into atomic, factual statements for precise retrieval.                                                                                      |
-| [15. Multimodel RAG](15_multimodel_rag.ipynb)   | Combines text and images for retrieval, generating captions for images using LLaVA.                                                                  |
-| [16. Fusion RAG](16_fusion_rag.ipynb)         | Combines vector search with keyword-based (BM25) retrieval for improved results.                                                                                |
-| [17. Graph RAG](17_graph_rag.ipynb)           | Organizes knowledge as a graph, enabling traversal of related concepts.                                                                                        |
-| [18. Hierarchy RAG](18_hierarchy_rag.ipynb)        | Builds hierarchical indices (summaries + detailed chunks) for efficient retrieval.                                                                                   |
-| [19. HyDE RAG](19_HyDE_rag.ipynb)             | Uses Hypothetical Document Embeddings to improve semantic matching.                                                                                              |
-| [20. CRAG](20_crag.ipynb)                     | Corrective RAG: Dynamically evaluates retrieval quality and uses web search as a fallback.                                                                           |
+| File                | Description                                                   |
+|---------------------|---------------------------------------------------------------|
+| `rag_using_groq.ipynb` | Jupyter Notebook for prototyping RAG pipeline and experimentation. This is where core logic was developed, tested, and refined. |
+| `app.py`            | Main Streamlit application wrapping the RAG pipeline into an interactive web interface. Upload PDFs, ask questions, get answers! |
+| `.env`              | Environment variables file — store your `GROQ_API_KEY` here securely. |
+| `requirements.txt`  | Required Python packages to run the notebook and app.         |
+| `README.md`         | This file — project overview, setup instructions, and usage.  |
 
-## 🗂️ Repository Structure
+---
 
-```
-fareedkhan-dev-all-rag-techniques/
-├── README.md                          <- You are here!
-├── 1_simple_rag.ipynb
-├── 2_semantic_chunking.ipynb
-├── 3_chunk_size_selector.ipynb
-├── 4_context_enriched_rag.ipynb
-├── 5_contextual_chunk_headers_rag.ipynb
-├── 6_doc_augmentation_rag.ipynb
-├── 7_query_transform.ipynb
-├── 8_reranker.ipynb
-├── 9_rse.ipynb
-├── 10_contextual_compression.ipynb
-├── 11_feedback_loop_rag.ipynb
-├── 12_adaptive_rag.ipynb
-├── 13_self_rag.ipynb
-├── 14_proposition_chunking.ipynb
-├── 15_multimodel_rag.ipynb
-├── 16_fusion_rag.ipynb
-├── 17_graph_rag.ipynb
-├── 18_hierarchy_rag.ipynb
-├── 19_HyDE_rag.ipynb
-├── 20_crag.ipynb
-├── requirements.txt                   <- Python dependencies
+## 🧠 How It Works
+
+### 1. Prototype in Notebook: `rag_using_groq.ipynb`
+
+- Extract text from PDFs with PyMuPDF
+- Split text into meaningful sentence-aware chunks for semantic coherence
+- Generate chunk embeddings using `all-MiniLM-L6-v2` SentenceTransformer model
+- Perform semantic search with cosine similarity to identify relevant chunks per query
+- Call GROQ LLM API with retrieved context for accurate, grounded responses
+- Tune chunk sizes, overlap, and prompt engineering for best performance
+
+### 2. Productionize in Streamlit: `app.py`
+
+- User uploads a PDF document
+- App extracts and chunks the text, caching embeddings for efficiency
+- User asks questions via the UI
+- Semantic search finds top relevant chunks
+- GROQ LLM generates answers based on those chunks
+- UI shows answers and the context chunks used for transparency
+
+---
+
+## 🛠️ Installation & Setup
+
+### 1. Clone this repository:
+
+```bash
+git clone https://github.com/sbshihab24/simple-rag-streamlit.git
+cd simple-rag-streamlit
+### 2. Install dependencies:
+pip install -r requirements.txt
+### 3. Set your GROQ API Key:
+Create a .env file in the root directory with:
+GROQ_API_KEY=your_groq_api_key_here
+## ⚡ Run the App
+streamlit run app.py
+
+## 🔍 Core Concepts
+Sentence-Aware Chunking: Keeps text chunks semantically complete to preserve meaning
+
+Embeddings: Converts text chunks into numerical vectors with SentenceTransformer
+
+Semantic Search: Uses cosine similarity to find chunks most relevant to your query
+
+GROQ LLM API: Answers questions grounded on the retrieved context for accuracy and reliability
+
+Caching: Efficient loading and reuse of embedding models and chunk embeddings for performance
+
+Streamlit UI: User-friendly interface for easy PDF-based Q&A without coding
+
+## 🗂️ Project Structure Overview
+simple-rag-streamlit/
+├── app.py                 # Streamlit app for PDF upload & Q&A
+├── rag_using_groq.ipynb   # Notebook prototyping the RAG pipeline
+├── requirements.txt       # Python dependencies
+├── .env                   # Environment variables (GROQ_API_KEY)
+├── README.md              # This file
 └── data/
     └── val.json                       <- Sample validation data (queries and answers)
     └── AI_information.pdf             <- A sample PDF document for testing.
     └── attention_is_all_you_need.pdf  <- A sample PDF document for testing (for Multi-Modal RAG).
-```
 
-## 🛠️ Getting Started
+### 🤝 Contributions
+Contributions, issues, and feature requests are welcome! Feel free to open a PR or submit an issue.
 
-1.  **Clone the repository:**
+If you find this project helpful, please ⭐ star the repo!
 
-    ```bash
-    git clone https://github.com/FareedKhan-dev/all-rag-techniques.git
-    cd all-rag-techniques
-    ```
+### 📫 Contact
+Mehedi Hasan Shihab
 
-2.  **Install dependencies:**
+GitHub: sbshihab24
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+LinkedIn: shihab24
 
-3.  **Set up your OpenAI API key:**
-
-    *   Obtain an API key from [Nebius AI](https://studio.nebius.com/).
-    *   Set the API key as an environment variable:
-        ```bash
-        export OPENAI_API_KEY='YOUR_NEBIUS_AI_API_KEY'
-        ```
-        or
-        ```bash
-        setx OPENAI_API_KEY "YOUR_NEBIUS_AI_API_KEY"  # On Windows
-        ```
-        or, within your Python script/notebook:
-
-        ```python
-        import os
-        os.environ["OPENAI_API_KEY"] = "YOUR_NEBIUS_AI_API_KEY"
-        ```
-
-4.  **Run the notebooks:**
-
-    Open any of the Jupyter Notebooks (`.ipynb` files) using Jupyter Notebook or JupyterLab.  Each notebook is self-contained and can be run independently.  The notebooks are designed to be executed sequentially within each file.
-
-    **Note:** The `data/AI_information.pdf` file provides a sample document for testing. You can replace it with your own PDF.  The `data/val.json` file contains sample queries and ideal answers for evaluation.
-    The 'attention_is_all_you_need.pdf' is for testing Multi-Modal RAG Notebook.
-
-## 💡 Core Concepts
-
-*   **Embeddings:**  Numerical representations of text that capture semantic meaning.  We use Nebius AI's embedding API and, in many notebooks, also the `BAAI/bge-en-icl` embedding model.
-
-*   **Vector Store:**  A simple database to store and search embeddings.  We create our own `SimpleVectorStore` class using NumPy for efficient similarity calculations.
-
-*   **Cosine Similarity:**  A measure of similarity between two vectors.  Higher values indicate greater similarity.
-
-*   **Chunking:**  Dividing text into smaller, manageable pieces.  We explore various chunking strategies.
-
-*   **Retrieval:** The process of finding the most relevant text chunks for a given query.
-
-*   **Generation:**  Using a Large Language Model (LLM) to create a response based on the retrieved context and the user's query.  We use the `meta-llama/Llama-3.2-3B-Instruct` model via Nebius AI's API.
-
-*   **Evaluation:**  Assessing the quality of the RAG system's responses, often by comparing them to a reference answer or using an LLM to score relevance.
-
-## 🤝 Contributing
-
-Contributions are welcome!
+Email: sbshihab2000@gmail.com
