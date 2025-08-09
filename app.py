@@ -1,11 +1,10 @@
 import os
-import streamlit as st
-from dotenv import load_dotenv
-import fitz  # PyMuPDF
 import re
+import streamlit as st
+import fitz  # PyMuPDF
+from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer, util
-import numpy as np
-from openai import OpenAI
+from groq import Groq
 
 # ========================
 # Load Environment Variables
@@ -13,6 +12,9 @@ from openai import OpenAI
 load_dotenv()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_MODEL = "llama3-8b-8192"
+
+if not GROQ_API_KEY:
+    raise ValueError("❌ GROQ_API_KEY is missing. Add it to your .env or Streamlit secrets.")
 
 # ========================
 # Load Embedding Model (Cached)
@@ -22,15 +24,16 @@ def load_embedding_model():
     return SentenceTransformer("all-MiniLM-L6-v2")
 
 # ========================
-# Sentence-Aware PDF Chunking (1000 words max per chunk)
+# Sentence-Aware PDF Chunking
 # ========================
 def split_into_chunks(text, max_words=1000):
-    sentences = re.split(r'(?<=[.!?]) +', text)
+    sentences = re.split(r'(?<=[.!?])\s+', text.strip())
     chunks, current_chunk = [], []
     current_len = 0
 
     for sentence in sentences:
-        word_count = len(sentence.split())
+        words = sentence.split()
+        word_count = len(words)
         if current_len + word_count <= max_words:
             current_chunk.append(sentence)
             current_len += word_count
@@ -38,16 +41,20 @@ def split_into_chunks(text, max_words=1000):
             chunks.append(" ".join(current_chunk))
             current_chunk = [sentence]
             current_len = word_count
+
     if current_chunk:
         chunks.append(" ".join(current_chunk))
-
     return chunks
 
 # ========================
 # Extract Text from PDF
 # ========================
 def extract_text_from_pdf(pdf_bytes):
-    doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+    try:
+        doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+    except Exception as e:
+        st.error(f"Error reading PDF: {e}")
+        return ""
     text = ""
     for page in doc:
         text += page.get_text()
@@ -77,7 +84,7 @@ def perform_semantic_search(query, chunks, chunk_embeddings, embedding_model, to
 # Generate Response from GROQ
 # ========================
 def generate_response(system_prompt, user_prompt):
-    client = OpenAI(api_key=GROQ_API_KEY, base_url="https://api.groq.com/openai/v1")
+    client = Groq(api_key=GROQ_API_KEY)
     response = client.chat.completions.create(
         model=GROQ_MODEL,
         messages=[
