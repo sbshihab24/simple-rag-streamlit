@@ -65,7 +65,8 @@ Get your API key here: https://console.groq.com/keys
 
 ⚡ Run the App
 streamlit run app.py
-🔍 Core Concepts
+
+##🔍 Core Concepts
 Sentence-Aware Chunking: Preserves semantic integrity of text chunks
 
 Embeddings: Converts text to vector representations for semantic similarity
@@ -79,9 +80,7 @@ Caching: Efficiently loads models and caches embeddings
 Streamlit UI: Simple interface for PDF upload and question answering
 
 ## 🗂️ Project Structure
-plaintext
-Copy
-Edit
+
 simple-rag-streamlit/
 ├── app.py                 # Streamlit app for PDF upload & Q&A
 ├── rag_using_groq.ipynb   # Notebook prototyping the RAG pipeline
@@ -89,10 +88,10 @@ simple-rag-streamlit/
 ├── .env                   # Environment variables (GROQ_API_KEY)
 ├── README.md              # This file
 └── data/
-    ├── val.json                       # Sample validation data (queries and answers)
-    ├── AI_information.pdf             # Sample PDF document for testing
-    └── attention_is_all_you_need.pdf  # Sample PDF for Multi-Modal RAG testing
-🤝 Contributions
+    ├── val.json                       # Sample validation data
+    ├── AI_information.pdf             # Sample PDF document
+    └── attention_is_all_you_need.pdf  # Sample PDF for testing
+## 🤝 Contributions
 Contributions, issues, and feature requests are welcome! Feel free to open a PR or submit an issue.
 
 If you find this project helpful, please ⭐ star the repo!
