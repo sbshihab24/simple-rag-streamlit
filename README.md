@@ -88,12 +88,12 @@ simple-rag-streamlit/
     └── AI_information.pdf             <- A sample PDF document for testing.
     └── attention_is_all_you_need.pdf  <- A sample PDF document for testing (for Multi-Modal RAG).
 ---
-### 🤝 Contributions
+## 🤝 Contributions
 Contributions, issues, and feature requests are welcome! Feel free to open a PR or submit an issue.
 
 If you find this project helpful, please ⭐ star the repo!
 
-### 📫 Contact
+## 📫 Contact
 Mehedi Hasan Shihab
 
 GitHub: sbshihab24
